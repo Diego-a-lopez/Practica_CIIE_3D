@@ -5,14 +5,19 @@ using UnityEngine;
 public class AnimationControl : MonoBehaviour
 {
     public GameObject doggo;
-    public float rotSpeed = 90; //rotation speed in degrees/second 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButton("1KEY")){
+        if (Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
+        {
             doggo.GetComponent<Animator>().Play("RunForwardBattle");
         }
-        else{
+        else if (Input.GetButton("Jump"))
+        {
+            doggo.GetComponent<Animator>().Play("Defend");
+        }
+        else
+        {
             doggo.GetComponent<Animator>().Play("Idle_Battle");
         }
     }

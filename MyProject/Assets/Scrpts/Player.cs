@@ -5,10 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
+    private float speed = 7;
+    private float rotationSpeed = 720;
     private bool jumpKeyWasPressed;
-    private int axis;
-    private int speed = 10;
     private Rigidbody rigidBody;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,62 +19,42 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // check if space key is pressed
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
+        movementDirection.Normalize();
+        transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
+
+        if (movementDirection != Vector3.zero)
+        {
+
+
+            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             jumpKeyWasPressed = true;
         }
-        // check if W key is pressed
-        else if (Input.GetKey(KeyCode.W))
-        {
-            axis = 8;
-        }
-        // check if S key is pressed
-        else if (Input.GetKey(KeyCode.S))
-        {
-            axis = 2;
-        }
-        // check if A key is pressed
-        else if (Input.GetKey(KeyCode.A))
-        {
-            axis = 4;
-        }
-        // check if D key is pressed
-        else if (Input.GetKey(KeyCode.D))
-        {
-            axis = 6;
-        }
-        else {
-            axis = 5;
-        }
+
     }
 
-    private void FixedUpdate() {
 
-        if (jumpKeyWasPressed) {
+    private void FixedUpdate()
+    {
+
+        if (jumpKeyWasPressed)
+        {
             rigidBody.AddForce(Vector3.up * 5, ForceMode.VelocityChange);
             jumpKeyWasPressed = false;
         }
-
-        switch (axis) {
-            case 2:
-                rigidBody.velocity = new Vector3(0, rigidBody.velocity.y, -speed);
-                break;
-            case 4:
-                rigidBody.velocity = new Vector3(-speed, rigidBody.velocity.y, 0);
-                break;
-            case 5:
-                rigidBody.velocity = new Vector3(0, rigidBody.velocity.y, 0);
-                break;
-            case 6:
-                rigidBody.velocity = new Vector3(speed, rigidBody.velocity.y, 0);
-                break;
-            case 8:
-                rigidBody.velocity = new Vector3(0, rigidBody.velocity.y, speed);
-                break;
-        }
-          
-
-    
     }
 }
+
+
+
+
+
