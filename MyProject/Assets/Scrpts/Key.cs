@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Key : MonoBehaviour
 {
+    GameObject Obj;
     public Inventory inv;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Obj = GameObject.Find("Inventory");
+        inv = Obj.GetComponent<Inventory>();
     }
 
     void OnTriggerEnter (Collider obj)

@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
+    public int HP = 100;
+    public int maxHP = 100;
     private float speed = 7;
     private float rotationSpeed = 720;
     private bool jumpKeyWasPressed;
     private Rigidbody rigidBody;
+
+    public void LowerHp() {
+        HP += -10;
+        if (HP == 0) Destroy(this.gameObject);
+    }
+
+    public void IncreaseHp() {
+        HP += 10;
+    }
+
 
     // Start is called before the first frame update
     void Start()

@@ -2,22 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour { 
-    bool redKey;
+public class Inventory : MonoBehaviour
+{
+    public bool redKey = false;
 
-    public void AddRedKey() {
-    redKey = true;
+    public void AddRedKey()
+    {
+        redKey = true;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
