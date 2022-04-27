@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
 
     public Slider hpbar; //assign the object HPbar of the canvas
     public Text hptext; //assing the object HPnums
-    public Player player; //as the script is assigned to the dog, assign here the dog
+    public PlayerHealth playerHealth; //as the script is assigned to the dog, assign here the dog
     GameObject Obj;
     GameObject Obj2;
     //public PlayerInventory playerInventory; // as the script is assigned to the dog, assign here the dog
@@ -19,9 +19,9 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Obj = GameObject.Find("Player");
+        Obj = GameObject.Find("PlayerHealth");
         Obj2 = GameObject.Find("HP");
-        player = Obj.GetComponent<Player>();
+        playerHealth = Obj.GetComponent<PlayerHealth>();
 
         if (!uiExists) {
             uiExists = true;
@@ -34,8 +34,8 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        hpbar.maxValue = player.maxHP; //the bar's top value will be the maxHP of the player
-        hpbar.value = player.HP; //bar will fill until the current hp of the player
-        hptext.text = "HP: " + player.maxHP + "/" + player.HP; //text will show hp in format HP: x/5
+        hpbar.maxValue = playerHealth.maxHP; //the bar's top value will be the maxHP of the player
+        hpbar.value = playerHealth.currentHP; //bar will fill until the current hp of the player
+        hptext.text = "HP: " + playerHealth.maxHP + "/" + playerHealth.currentHP; //text will show hp in format HP: x/5
     }
 }

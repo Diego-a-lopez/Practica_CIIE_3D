@@ -5,16 +5,15 @@ using UnityEngine;
 public class trapDmg : MonoBehaviour
 {
     GameObject Obj;
-    public Player player;
+    public PlayerHealth player;
     // Start is called before the first frame update
     void Start()
     {
-       Obj = GameObject.Find("Player");
-
-       player = Obj.GetComponent<Player>();
+       Obj = GameObject.Find("PlayerHealth");
+       player = Obj.GetComponent<PlayerHealth>();
     }
 
-    void OnTriggerEnter(Collider obj)
+    void OnTriggerStay(Collider obj)
     {
 
         if (obj.gameObject.tag == "Player")

@@ -4,28 +4,23 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int HP = 100;
-    public int maxHP = 100;
+
     private float speed = 7;
     private float rotationSpeed = 720;
     private bool jumpKeyWasPressed;
     private Rigidbody rigidBody;
-
-    public void LowerHp() {
-        HP += -10;
-        if (HP == 0) Destroy(this.gameObject);
-    }
-
-    public void IncreaseHp() {
-        HP += 10;
-    }
-
+    GameObject Obj;
+    private Director director;
 
     // Start is called before the first frame update
     void Start()
     {
+        Obj = GameObject.Find("Director");
+        director = Obj.GetComponent<Director>();
         rigidBody = GetComponent<Rigidbody>();
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -49,6 +44,11 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             jumpKeyWasPressed = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            director.GoToMain();
         }
 
     }
