@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public bool redKey = false;
+    public bool redKey;
+    public bool greenKey;
+    public bool blueKey;
 
     public void AddRedKey()
     {
@@ -14,6 +16,9 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        redKey = false;
+        greenKey = false;
+        blueKey = false;
     }
 
     // Update is called once per frame

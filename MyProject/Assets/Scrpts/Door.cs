@@ -21,6 +21,7 @@ public class Door : MonoBehaviour
         {
             //inv.AddRedKey();
             if (inv.redKey) Destroy(this.gameObject);
+
         }
 
     }

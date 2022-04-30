@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-
+    int cooldown;
     public int maxHP = 100; //the player max health, this should be assigned 5 aprox
     public int currentHP;
     private Director director;
@@ -16,8 +16,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void LowerHp()
     {
-        currentHP += -10;
-        //if (HP == 0) Destroy(this.gameObject);
+        if (cooldown < 0) { currentHP += -10; cooldown = 500;}
+        //currentHP += -10;
+        //if (currentHP < 0) Destroy(this.gameObject);
     }
 
     public void IncreaseHp()
@@ -30,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cooldown = 1000;
         maxHP = 100;
         currentHP = maxHP; //player starts full health
         Obj = GameObject.Find("Director");
@@ -50,4 +52,10 @@ public class PlayerHealth : MonoBehaviour
         currentHP -= damage;
 
     }
+
+    void FixedUpdate() {
+        cooldown = cooldown  - 100;
+
+    }
+
 }
