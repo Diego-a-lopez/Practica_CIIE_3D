@@ -15,6 +15,10 @@ public class Director : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void GoToNext() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
     // Update is called once per frame
     void Update()
     {
