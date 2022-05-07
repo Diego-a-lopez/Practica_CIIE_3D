@@ -5,35 +5,53 @@ using UnityEngine.UI;
 
 public class Volume : MonoBehaviour
 {
-    public Text text;
+    private Text text;
     public GameObject OAudioClip;
-    private AudioSource AudioClip;
-    private Volume volume;
-
+    public GameObject OGameAssets;
+    private GameAssets GameAssets;
+    //private AudioSource AudioClip;
+    private float volume;
     // Start is called before the first frame update
     void Start()
     {
         text = GetComponent<Text>();
-        AudioClip = OAudioClip.GetComponent<AudioSource>();
-        volume = AudioClip.GetComponent<Volume>();
+        OGameAssets = GameObject.Find("GameAssets");
+        GameAssets = OGameAssets.GetComponent<GameAssets>();
+        volume = GameAssets.sysVolume;
+        //AudioClip = GameAssets.GetComponent<AudioSource>();
     }
 
     public void UpVolume()
     {
-       
 
+        if (volume < 10) {
+            volume++;
+            GameAssets.sysVolume = volume;
+            //AudioClip.volume = (volume + 1) / 10; 
+        }
 
     }
     public void DownVolume()
     {
-       
 
+        if (volume > 0)
+        {
+            volume--;
+            GameAssets.sysVolume = volume;
+            //AudioClip.volume = (volume - 1) / 10;
+        
+        }
 
+    }
+
+    public void ToggleSound() {
+        if (GameAssets.music) GameAssets.music = false;
+        else GameAssets.music = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        text = volume.text;
+        text.text = volume.ToString();
     }
 }

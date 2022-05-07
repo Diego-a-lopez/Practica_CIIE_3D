@@ -14,18 +14,21 @@ public class Player : MonoBehaviour
     //Booleans for jump controll.
     private bool jumpKeyWasPressed;
     private bool grounded = true;
-
     //Extra stuff that does not fit previous categories.
-    GameObject Obj;
+    public GameObject ODirector;
+    private GameAssets assets;
     private Rigidbody rigidBody;
     private Director director;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameObject Obj;
         rigidBody = GetComponent<Rigidbody>();
-        Obj = GameObject.Find("Director");
-        //director = Obj.GetComponent<Director>();
+        //ODirector = GameObject.Find("Director");
+        Obj = GameObject.Find("GameAssets");
+        assets = Obj.GetComponent<GameAssets>();
+        director = ODirector.GetComponent<Director>();
     }
 
     // Update is called once per frame
@@ -56,6 +59,7 @@ public class Player : MonoBehaviour
 
         //Control for jump and check if we are in the ground as an extra.
         if(Input.GetButtonDown("Jump") && grounded){
+            assets.PlayJump();
            jumpKeyWasPressed = true;
         }
 

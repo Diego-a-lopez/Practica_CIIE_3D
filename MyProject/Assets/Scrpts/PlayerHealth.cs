@@ -8,6 +8,8 @@ public class PlayerHealth : MonoBehaviour
     public int maxHP; //the player max health, this should be assigned 5 aprox
     public int currentHP;
 
+    public GameObject director;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,8 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         if (currentHP <= 0) {
-            gameObject.SetActive(false); //this code is temporal, when the player dies is desactivated
+            //gameObject.SetActive(false); //this code is temporal, when the player dies is desactivated
+            director.GetComponent<Director>().GoToMain();
         }
     }
 

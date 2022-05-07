@@ -9,11 +9,8 @@ public class UIManager : MonoBehaviour
     public Slider hpbar; //assign the object HPbar of the canvas
     public Text hptext; //assing the object HPnums
     public PlayerHealth playerHealth; //as the script is assigned to the dog, assign here the dog
-    public Inventory inv;
-
-    GameObject Obj;
-    GameObject Obj2;
-    GameObject Obj3;
+    public GameObject inventory;
+    public GameObject key;
     //public PlayerInventory playerInventory; // as the script is assigned to the dog, assign here the dog
 
     private static bool uiExists; //this will keep the hp bar and text when the player changes to another scene, otherwise it'd dissapear in the new scene
@@ -22,21 +19,6 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Obj = GameObject.Find("PlayerHealth");
-        //hpbar = GameObject.Find("HPBar");
-
-        playerHealth = Obj.GetComponent<PlayerHealth>();
-        Obj = GameObject.Find("PlayerHealth");
-
-        Obj2 = GameObject.Find("Red");
-
-        GameObject tmp = GameObject.Find("Inventory");
-        inv = tmp.GetComponent<Inventory>();
-        /*
-        Obj3 = GameObject.Find("HPnums");
-        hptext = Obj3.GetComponent<Text>();
-            */
-
         if (!uiExists) {
             uiExists = true;
             DontDestroyOnLoad(transform.gameObject);
@@ -49,7 +31,7 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         //keys
-        if (inv.redKey) Obj2.SetActive(true);
+        if (inventory.GetComponent<Inventory>().redKey) key.SetActive(true);
 
 
         hpbar.maxValue = playerHealth.maxHP; //the bar's top value will be the maxHP of the player

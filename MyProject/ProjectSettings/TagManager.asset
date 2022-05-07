@@ -6,6 +6,7 @@ TagManager:
   tags:
   - HP
   - Inventory
+  - Ground
   layers:
   - Default
   - TransparentFX

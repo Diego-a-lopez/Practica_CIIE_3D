@@ -24,7 +24,7 @@ public  class SoundManager
     {
         if (canPlaySound(sound)) {
             GameObject soundGameObject = new GameObject("Sound");
-            AudioSource audioSource = soundGameObject.addComponent<AudioSource>();
+            AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
             audioSource.PlayOneShot(GetAudioClip(sound));
         }
     }
@@ -43,12 +43,13 @@ public  class SoundManager
                     }
                     else return false;
                 }
-                //break;
+                else return false;
+                break;
         }
     }
 
     private static AudioClip GetAudioClip(Sound sound) {
-        foreach (GameAssets.SoundAudioClip soundAudioClip in GameAssets.i.soundAudioClipArray) {
+        foreach (GameAssets.AudioClip AudioClip in GameAssets.i.soundAudioClipArray) {
             if (soundAudioClip.sound == sound) {
                 return soundAudioClip.audioClip;
             }

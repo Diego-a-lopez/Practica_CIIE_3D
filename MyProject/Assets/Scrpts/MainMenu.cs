@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
+    public GameObject ODirector;
+    private Director Director;
 
     public void PlayGame() 
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Director.GoToNext();
     }
 
     public void QuitGame()
@@ -18,7 +20,7 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Director = ODirector.GetComponent<Director>();
     }
 
     // Update is called once per frame

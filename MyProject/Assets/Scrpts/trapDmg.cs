@@ -5,12 +5,11 @@ using UnityEngine;
 public class trapDmg : MonoBehaviour
 {
     GameObject Obj;
+    int cooldown;
     public PlayerHealth player;
     // Start is called before the first frame update
     void Start()
     {
-       Obj = GameObject.Find("PlayerHealth");
-       player = Obj.GetComponent<PlayerHealth>();
     }
 
     void OnTriggerStay(Collider obj)
@@ -18,7 +17,8 @@ public class trapDmg : MonoBehaviour
 
         if (obj.gameObject.tag == "Player")
         {
-            player.LowerHp();
+            if (cooldown < 0) { player.HurtPlayer(10); cooldown = 500; }
+                
         }
 
     }
@@ -26,6 +26,6 @@ public class trapDmg : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        cooldown = cooldown - 10;
     }
 }
