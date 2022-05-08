@@ -1,3 +1,7 @@
 Aquí incluír notas respecto a los objetos del projecto para futuros patrones.
 
 La carpeta scripts iría dentro de la carpeta de assets
+
+Nota Respecto al Cinemachine3rd Person Camera: En el loot at y follow llevar el player si no aparece. 
+Posibles clases a añadir: Player, MainCamera, 3rdPersonCamera (Cinemachine). Script Player y Sceript AnimationControl posibles clases
+Cinemachine se descarga en el ProjectManager, Unity Assets (o algo así, no en los propios). Versión 2.8.4
