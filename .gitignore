@@ -69,3 +69,8 @@ MyProject/Assets/DogKnight/*
 MyProject/Temp/*
 MyProject/Assets/asset_store/*
 MyProject/Logs/*
+
+
+
+# Ignoracion de carpeta de assets no usados (Alejandro88)
+MyProject/Assets/Assets_no_usados/*
