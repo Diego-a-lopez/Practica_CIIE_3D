@@ -15,7 +15,8 @@ public class Player : MonoBehaviour
     private bool jumpKeyWasPressed;
     private bool grounded = true;
     //Extra stuff that does not fit previous categories.
-    public GameObject ODirector;
+    //public GameObject ODirector;
+    //public GameObject OGameAssets;
     private GameAssets assets;
     private Rigidbody rigidBody;
     private Director director;
@@ -28,7 +29,8 @@ public class Player : MonoBehaviour
         //ODirector = GameObject.Find("Director");
         Obj = GameObject.Find("GameAssets");
         assets = Obj.GetComponent<GameAssets>();
-        director = ODirector.GetComponent<Director>();
+        Obj = GameObject.Find("Director");
+        director = Obj.GetComponent<Director>();
     }
 
     // Update is called once per frame
