@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
     {
         if (!uiExists) {
             uiExists = true;
-            DontDestroyOnLoad(transform.gameObject);
+            //DontDestroyOnLoad(transform.gameObject);
         } else {
             Destroy(gameObject); //this will port or destroy the hp bar at scene change
         }
