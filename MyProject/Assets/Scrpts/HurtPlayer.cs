@@ -19,8 +19,8 @@ public class HurtPlayer : MonoBehaviour
         
     }
 
-    void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.name == "Player") {
+    void OnCollisionEnter(Collision other) {
+        if (other.gameObject.tag == "Player") {
             other.gameObject.GetComponent<PlayerHealth>().HurtPlayer(damagedealt);
         }
 
